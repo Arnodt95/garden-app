@@ -1,31 +1,30 @@
 # Hardcoded values for the season and plant type
-season = "summer"  # TODO: Replace with input() to allow user interaction.
-plant_type = "flower"  # TODO: Replace with input() to allow user interaction.
+season = "summer"
+plant_type = "flower"
 
-# Variable to hold gardening advice
+# Advice stored in dictionaries (supports multiple seasons and plant types)
+season_advice = {
+    "summer": "Water your plants regularly and provide some shade.\n",
+    "winter": "Protect your plants from frost with covers.\n",
+    "spring": "Plant new seedlings and keep soil moist as temperatures rise.\n",
+    "autumn": "Mulch garden beds and reduce watering as it cools down.\n"
+}
+
+plant_type_advice = {
+    "flower": "Use fertiliser to encourage blooms.",
+    "vegetable": "Keep an eye out for pests!",
+    "herb": "Harvest regularly to encourage more growth.",
+    "tree": "Water deeply and mulch around the base (not against the trunk)."
+}
+
+# Default messages if the key is not found
+default_season_msg = "No advice for this season.\n"
+default_plant_msg = "No advice for this type of plant."
+
+# Build final advice using dictionary lookups
 advice = ""
-
-# Determine advice based on the season
-if season == "summer":
-    advice += "Water your plants regularly and provide some shade.\n"
-elif season == "winter":
-    advice += "Protect your plants from frost with covers.\n"
-else:
-    advice += "No advice for this season.\n"
-
-# Determine advice based on the plant type
-if plant_type == "flower":
-    advice += "Use fertiliser to encourage blooms."
-elif plant_type == "vegetable":
-    advice += "Keep an eye out for pests!"
-else:
-    advice += "No advice for this type of plant."
+advice += season_advice.get(season, default_season_msg)
+advice += plant_type_advice.get(plant_type, default_plant_msg)
 
 # Print the generated advice
 print(advice)
-
-# TODO: Examples of possible features to add:
-# - Add detailed comments explaining each block of code.
-# - Refactor the code into functions for better readability and modularity.
-# - Store advice in a dictionary for multiple plants and seasons.
-# - Recommend plants based on the entered season.
